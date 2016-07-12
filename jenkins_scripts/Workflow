@@ -1,0 +1,26 @@
+### Drupal 7 Sites ###
+- initialize_new_project.sh (Maybe PHP hook) -- A new project is created in Phabricator.
+  - create_local_prod.sh            -- Creates a local prod / initializes the project production site.
+  - This triggers a 3 new build jobs on Jenkins
+    - Development Build.  This is a nightly build from all merged code into the
+      Development branch of the provided repository.
+       + clean_last_build_dev.sh        -- Deletes the old development site.
+       + build_platform_dev.sh      -- Builds the code.
+       ** run_tests.sh               -- Runs automation tests to check code
+       ** run_pdiff.sh               -- Runs PDiff on platform, posts to a new Pholio mock.
+       + post_results_wiki.sh       -- Posts results to a Wiki tracking the changes.
+       
+
+    - Stage Build.  This is a build that is triggered when a new Phabricator Diff
+      Is submitted.
+      - build_platform_stage.sh     -- Builds the code.
+      - apply_diff.sh               -- Applies the Diff.
+      - create_stage.sh             -- Clones the 'production' database into the new platform.
+      ** run_tests.sh                -- Runs automation tests to check code
+      ** run_pdiff.sh                -- Runs PerceptualDiff to see visual changes.
+      + post_results_diff_.sh        -- Posts results to the Diff. Success and Failure message
+
+    - Merge Build. This is a build that is triggered when a Phabricator Diff is accepted.
+      - clean_last_stage.sh         -- Cleans up the stage site and platform, removes code from server.
+
+** Waiting on Feedback from hosting provider.

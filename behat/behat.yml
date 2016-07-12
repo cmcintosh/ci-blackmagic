@@ -1,0 +1,9 @@
+default:
+  extensions:
+    Behat\MinkExtension:
+      base_url:  'https://drupal.org'
+      sessions:
+        default:
+          selenium2:
+            browser: 'firefox'
+            wd_host: cmcintosh:1675b26e-99a3-40fb-84f0-843c5c7f5747@ondemand.saucelabs.com:80/wd/hub

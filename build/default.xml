@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="default">
+  <testsuite name="Drupal.org search" tests="1" skipped="0" failures="0" errors="0">
+    <testcase name="Searching for &quot;behat&quot;" status="passed"></testcase>
+  </testsuite>
+</testsuites>
